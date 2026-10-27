@@ -1,0 +1,1536 @@
+@charset "UTF-8";
+/* Play Digital Co., Ltd. (playdigital.co.th) — Classic Stylesheet for Laravel */
+
+@font-face {
+    font-family: 'PlayDisplay';
+    src: url('../fonts/space-latin.woff2') format('woff2');
+    font-weight: 400 700;
+    font-style: normal;
+    font-display: swap;
+}
+
+@font-face {
+    font-family: 'PlaySans';
+    src: url('../fonts/sans-latin.woff2') format('woff2');
+    font-weight: 400 700;
+    font-style: normal;
+    font-display: swap;
+}
+
+@font-face {
+    font-family: 'PlayThai';
+    src: url('../fonts/thai-thai.woff2') format('woff2'),
+         url('../fonts/thai-latin.woff2') format('woff2');
+    font-weight: 400 700;
+    font-style: normal;
+    font-display: swap;
+}
+
+:root {
+    --pd-purple: #642f96;
+    --pd-purple-dark: #43156f;
+    --pd-purple-light: #a472ca;
+    --pd-dark: #333333;
+    --pd-light-bg: #f4f4f4;
+    --pd-heading-font: 'PlayDisplay', 'PlayThai', Arial, Tahoma, sans-serif;
+    --pd-body-font: 'PlaySans', 'PlayThai', Arial, Tahoma, sans-serif;
+}
+
+*, *::before, *::after {
+    box-sizing: border-box;
+}
+
+html {
+    scroll-behavior: smooth;
+    scroll-padding-top: 92px;
+}
+
+body {
+    background-color: #333333;
+    margin: 0;
+    padding: 0;
+    font-family: Arial, Tahoma, 'PlayThai', sans-serif;
+    font-size: 14px;
+    color: #666666;
+    -webkit-font-smoothing: antialiased;
+}
+
+img {
+    border: 0;
+    max-width: 100%;
+    height: auto;
+    vertical-align: middle;
+}
+
+h1, h2, h3, h4, h5, h6, p {
+    margin: 0;
+    padding: 0;
+}
+
+ul {
+    margin: 0;
+    padding: 0;
+    list-style: none;
+}
+
+a {
+    text-decoration: none;
+    color: #333333;
+    transition: color 0.2s ease;
+}
+
+a:hover,
+a:focus {
+    text-decoration: none;
+    color: #642f96;
+}
+
+a:focus-visible,
+button:focus-visible,
+input:focus-visible,
+select:focus-visible,
+textarea:focus-visible {
+    outline: 2px solid #642f96;
+    outline-offset: 2px;
+}
+
+article, aside, details, figcaption, figure, footer, header, hgroup, main, menu, nav, section, summary {
+    display: block;
+}
+
+figure {
+    margin: 0;
+    padding: 0;
+}
+
+.container {
+    width: 1160px;
+    max-width: calc(100% - 32px);
+    margin: 0 auto;
+}
+
+.paragraph {
+    overflow: hidden;
+}
+
+.overflowNone {
+    overflow: visible;
+}
+
+.clear {
+    clear: both;
+    float: none;
+    line-height: 0;
+    font-size: 0;
+}
+
+/* ==========================================================================
+   Fixed Main Header (.mainHeader) & Navigation (.menuMain)
+   ========================================================================== */
+.mainHeader {
+    background: #ffffff;
+    padding: 18px 0;
+    position: fixed;
+    left: 0;
+    top: 0;
+    width: 100%;
+    z-index: 999;
+    box-shadow: 0 1px 10px rgba(0, 0, 0, 0.08);
+}
+
+.headerSpacer {
+    height: 86px;
+    background: #ffffff;
+}
+
+.logoMain {
+    float: left;
+}
+
+.logoMain a {
+    display: inline-block;
+}
+
+.logoMain img {
+    height: 46px;
+    width: auto;
+}
+
+.iconSocial {
+    float: right;
+    margin-top: 8px;
+    margin-left: 8px;
+}
+
+.iconSocial nav {
+    float: left;
+    margin: 0 5px;
+}
+
+.iconSocial nav a {
+    display: inline-block;
+    transition: transform 0.2s ease, opacity 0.2s ease;
+}
+
+.iconSocial nav a:hover {
+    transform: translateY(-2px);
+    opacity: 0.85;
+}
+
+.iconSocial nav img {
+    width: 30px;
+    height: 30px;
+}
+
+.menuMain {
+    float: right;
+}
+
+.menuMain > ul {
+    text-align: right;
+    margin-top: 14px;
+}
+
+.menuMain > ul > li {
+    display: inline-block;
+    position: relative;
+}
+
+.menuMain > ul > li > a {
+    display: block;
+    margin: 0 11px;
+    padding-bottom: 6px;
+    text-transform: uppercase;
+    font-size: 13px;
+    font-weight: 600;
+    letter-spacing: 0.04em;
+    color: #333333;
+}
+
+.menuMain > ul > li > a:hover,
+.menuMain > ul > li > a.active {
+    text-decoration: underline;
+    text-underline-offset: 5px;
+    color: #642f96;
+}
+
+/* Dropdown Submenu under WORK (exact rgba(93,103,103,0.88) + caret triangle) */
+.menuMain > ul > li > ul.subMenuWork {
+    position: absolute;
+    left: 0;
+    top: 100%;
+    margin-top: 12px;
+    min-width: 240px;
+    background-color: rgba(93, 103, 103, 0.92);
+    text-align: left;
+    display: none;
+    z-index: 1001;
+    box-shadow: 0 8px 24px rgba(0, 0, 0, 0.22);
+}
+
+.menuMain > ul > li.hasSubmenu::after {
+    content: '';
+    position: absolute;
+    left: 0;
+    right: 0;
+    bottom: -14px;
+    height: 14px;
+}
+
+.menuMain > ul > li.hasSubmenu:hover > ul.subMenuWork,
+.menuMain > ul > li.hasSubmenu.submenu-open > ul.subMenuWork {
+    display: block;
+}
+
+.menuMain > ul > li > ul.subMenuWork > span.caretTop {
+    width: 0;
+    height: 0;
+    border-left: 14px solid transparent;
+    border-right: 14px solid transparent;
+    border-bottom: 12px solid rgba(93, 103, 103, 0.92);
+    position: absolute;
+    left: 20px;
+    top: -12px;
+}
+
+.menuMain > ul > li > ul.subMenuWork > li {
+    display: block;
+    width: 100%;
+    border-bottom: 1px solid rgba(255, 255, 255, 0.35);
+}
+
+.menuMain > ul > li > ul.subMenuWork > li:last-child {
+    border-bottom: none;
+}
+
+.menuMain > ul > li > ul.subMenuWork > li > a {
+    display: block;
+    margin: 0;
+    color: #ffffff;
+    padding: 11px 18px;
+    font-size: 12px;
+    font-weight: 600;
+    letter-spacing: 0.03em;
+    white-space: nowrap;
+    text-transform: uppercase;
+}
+
+.menuMain > ul > li > ul.subMenuWork > li > a:hover {
+    background-color: #642f96;
+    text-decoration: underline;
+    color: #ffffff;
+}
+
+/* ==========================================================================
+   Mobile Burger Menu (.Menumobile / .dl-menuwrapper)
+   ========================================================================== */
+.Menumobile {
+    display: none;
+}
+
+.boxMenuBurger {
+    position: relative;
+    height: 45px;
+    z-index: 998;
+    background: #000000;
+}
+
+.dl-menuwrapper {
+    width: 100%;
+    max-width: 300px;
+    position: relative;
+}
+
+.dl-menuwrapper button.dl-trigger {
+    background: #000000;
+    border: none;
+    width: 48px;
+    height: 45px;
+    text-indent: -900em;
+    overflow: hidden;
+    position: relative;
+    cursor: pointer;
+}
+
+.dl-menuwrapper button.dl-trigger:hover,
+.dl-menuwrapper button.dl-trigger.dl-active {
+    background: #643096;
+}
+
+.dl-menuwrapper button.dl-trigger::after {
+    content: '';
+    position: absolute;
+    width: 64%;
+    height: 4px;
+    background: #ffffff;
+    top: 11px;
+    left: 18%;
+    box-shadow: 0 9px 0 #ffffff, 0 18px 0 #ffffff;
+}
+
+.dl-menuwrapper ul.dl-menu {
+    background: #643096;
+    margin: 0;
+    position: absolute;
+    top: 45px;
+    left: 0;
+    width: 100%;
+    display: none;
+    box-shadow: 0 10px 25px rgba(0, 0, 0, 0.35);
+    z-index: 1000;
+}
+
+.dl-menuwrapper ul.dl-menu.dl-menuopen {
+    display: block;
+}
+
+.dl-menuwrapper li {
+    position: relative;
+    border-bottom: 1px solid rgba(255, 255, 255, 0.14);
+}
+
+.dl-menuwrapper li a,
+.dl-menuwrapper li button.dl-sub-toggle {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    width: 100%;
+    background: transparent;
+    border: 0;
+    text-align: left;
+    padding: 13px 20px;
+    font-size: 18px;
+    line-height: 1.2;
+    color: #ffffff;
+    font-family: var(--pd-heading-font);
+    cursor: pointer;
+    text-transform: uppercase;
+}
+
+.dl-menuwrapper li a:hover,
+.dl-menuwrapper li a.active,
+.dl-menuwrapper li button.dl-sub-toggle:hover {
+    background: linear-gradient(to bottom, #43156f 0%, #643096 100%);
+    color: #ffffff;
+}
+
+.dl-menuwrapper ul.dl-submenu {
+    display: none;
+    background: #4f217b;
+}
+
+.dl-menuwrapper li.sub-open > ul.dl-submenu {
+    display: block;
+}
+
+.dl-menuwrapper ul.dl-submenu li a {
+    padding-left: 32px;
+    font-size: 15px;
+}
+
+/* ==========================================================================
+   Home Hero Showreel Video Banner (.heroShowreel)
+   ========================================================================== */
+.heroShowreel {
+    position: relative;
+    width: 100%;
+    background: #141414;
+    overflow: hidden;
+}
+
+.heroVideoAspect {
+    position: relative;
+    width: 100%;
+    aspect-ratio: 16 / 9;
+    max-height: 78vh;
+    background: #141414;
+    overflow: hidden;
+}
+
+.heroPoster {
+    position: absolute;
+    inset: 0;
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+    z-index: 1;
+    transition: opacity 0.8s ease;
+}
+
+.heroVideoAspect.video-ready .heroPoster {
+    opacity: 0;
+}
+
+.heroIframeWrap {
+    position: absolute;
+    inset: 0;
+    z-index: 2;
+    pointer-events: none;
+    overflow: hidden;
+}
+
+.heroIframeWrap iframe {
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    width: max(100%, 177.78vh);
+    height: max(100%, 56.25vw);
+    transform: translate(-50%, -50%);
+    border: 0;
+}
+
+.heroOverlayBar {
+    position: absolute;
+    left: 0;
+    right: 0;
+    bottom: 0;
+    z-index: 4;
+    padding: 18px 0;
+    background: linear-gradient(to top, rgba(0, 0, 0, 0.72) 0%, rgba(0, 0, 0, 0) 100%);
+}
+
+.heroOverlayInner {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    gap: 16px;
+}
+
+.heroCaption {
+    color: #ffffff;
+    font-family: var(--pd-heading-font);
+    font-size: 14px;
+    letter-spacing: 0.08em;
+    text-transform: uppercase;
+    opacity: 0.92;
+}
+
+.heroControls {
+    display: flex;
+    align-items: center;
+    gap: 10px;
+}
+
+.heroBtn {
+    display: inline-flex;
+    align-items: center;
+    gap: 7px;
+    background: rgba(20, 20, 20, 0.75);
+    color: #ffffff;
+    border: 1px solid rgba(255, 255, 255, 0.45);
+    padding: 8px 14px;
+    font-size: 12px;
+    font-weight: 600;
+    letter-spacing: 0.05em;
+    text-transform: uppercase;
+    cursor: pointer;
+    border-radius: 2px;
+    transition: background 0.2s ease, border-color 0.2s ease;
+}
+
+.heroBtn:hover {
+    background: #642f96;
+    border-color: #642f96;
+    color: #ffffff;
+}
+
+/* ==========================================================================
+   Section Headers & Home Portfolio Grid (.paragraphHome / .pagePortFolioHome)
+   ========================================================================== */
+.mainWhiteSurface {
+    background: #ffffff;
+}
+
+.paragraphHome {
+    background: #ffffff;
+    padding-top: 72px;
+    padding-bottom: 50px;
+}
+
+.paragraphHome header,
+.pageAbout header,
+.pageAbout2 header,
+.pageService header,
+.sectionHeaderClassic {
+    text-align: center;
+}
+
+.paragraphHome header .top,
+.pageAbout header .top,
+.pageAbout2 header .top,
+.pageService header .top,
+.sectionHeaderClassic .top {
+    color: #000000;
+    font-weight: 700;
+    font-family: var(--pd-heading-font);
+    font-size: 34px;
+    line-height: 1.2;
+    text-transform: uppercase;
+    letter-spacing: 0.02em;
+    padding-bottom: 6px;
+}
+
+.paragraphHome header .bottom,
+.pageAbout header .bottom,
+.pageService header .bottom,
+.sectionHeaderClassic .bottom {
+    color: #666666;
+    font-family: var(--pd-heading-font);
+    font-size: 20px;
+    line-height: 1.35;
+    text-transform: uppercase;
+    letter-spacing: 0.03em;
+}
+
+.pagePortFolioHome {
+    padding-top: 40px;
+}
+
+.pagePortFolioHome ul {
+    display: flex;
+    flex-wrap: wrap;
+    margin: 0 -14px;
+}
+
+.pagePortFolioHome ul li {
+    width: 33.333334%;
+    padding: 0 14px 28px 14px;
+}
+
+.pagePortFolioHome ul li a {
+    display: block;
+}
+
+.pagePortFolioHome ul li a .boxPort {
+    position: relative;
+    overflow: hidden;
+    background: #222222;
+    aspect-ratio: 4 / 3;
+}
+
+.pagePortFolioHome ul li a .boxPort figure {
+    position: relative;
+    width: 100%;
+    height: 100%;
+    background-position: center center;
+    background-size: cover;
+    background-repeat: no-repeat;
+    transition: transform 0.5s ease;
+}
+
+.pagePortFolioHome ul li a:hover .boxPort figure {
+    transform: scale(1.05);
+}
+
+.pagePortFolioHome ul li a .boxPort article {
+    position: absolute;
+    inset: 0;
+    opacity: 0;
+    transition: opacity 0.35s ease-in-out;
+    background-color: rgba(0, 0, 0, 0.74);
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    padding: 20px;
+    text-align: center;
+}
+
+.pagePortFolioHome ul li a:hover .boxPort article,
+.pagePortFolioHome ul li a:focus-visible .boxPort article {
+    opacity: 1;
+}
+
+.pagePortFolioHome ul li a .boxPort article .name {
+    font-family: var(--pd-heading-font);
+    color: #ffffff;
+    font-size: 26px;
+    font-weight: 700;
+    line-height: 1.2;
+    text-transform: uppercase;
+}
+
+.pagePortFolioHome ul li a .boxPort article .discription {
+    margin-top: 6px;
+    font-family: var(--pd-body-font);
+    color: #e6e6e6;
+    font-size: 15px;
+    line-height: 1.4;
+}
+
+.pagePortFolioHome ul li a .boxPort article nav {
+    font-family: var(--pd-heading-font);
+    color: #c8b8ef;
+    font-size: 12px;
+    font-weight: 600;
+    letter-spacing: 0.08em;
+    text-transform: uppercase;
+    padding-top: 14px;
+}
+
+.viewAllWorkWrap {
+    text-align: center;
+    margin-top: 12px;
+}
+
+.btnClassicPurple {
+    display: inline-block;
+    background: #642f96;
+    color: #ffffff;
+    padding: 12px 30px;
+    font-family: var(--pd-heading-font);
+    font-size: 14px;
+    font-weight: 600;
+    letter-spacing: 0.06em;
+    text-transform: uppercase;
+    border: 1px solid #642f96;
+    border-radius: 2px;
+    cursor: pointer;
+    transition: background 0.25s ease, color 0.25s ease;
+}
+
+.btnClassicPurple:hover {
+    background: #43156f;
+    border-color: #43156f;
+    color: #ffffff;
+}
+
+/* ==========================================================================
+   About & Play's Rules (.pageAbout / .pageAbout2)
+   ========================================================================== */
+.pageAbout {
+    padding: 80px 0;
+    background-color: #ffffff;
+    background-image: url('../images/bgabout.png');
+    background-position: center top;
+    border-top: 1px solid #eeeeee;
+}
+
+.pageAbout .pageContent {
+    font-size: 15px;
+    line-height: 1.75;
+    padding-top: 32px;
+    max-width: 820px;
+    margin: 0 auto;
+    text-align: center;
+    color: #555555;
+}
+
+.pageAbout2 {
+    padding-top: 68px;
+}
+
+.contentAbout2 {
+    padding-top: 40px;
+}
+
+.contentAbout2 ul {
+    display: flex;
+    flex-wrap: wrap;
+}
+
+.contentAbout2 ul li {
+    width: 25%;
+    padding-bottom: 20px;
+}
+
+.contentAbout2 ul li section {
+    padding: 0 18px;
+    text-align: center;
+}
+
+.contentAbout2 ul li section figure {
+    margin-bottom: 16px;
+    text-align: center;
+}
+
+.contentAbout2 ul li section figure img {
+    width: 108px;
+    height: 108px;
+    transition: transform 0.3s ease;
+}
+
+.contentAbout2 ul li section:hover figure img {
+    transform: translateY(-4px);
+}
+
+.contentAbout2 ul li section article .ruleTitle {
+    display: block;
+    font-family: var(--pd-heading-font);
+    font-size: 20px;
+    font-weight: 700;
+    color: #222222;
+    margin-bottom: 8px;
+}
+
+.contentAbout2 ul li section article p {
+    font-size: 13.5px;
+    line-height: 1.65;
+    color: #666666;
+}
+
+/* ==========================================================================
+   Services (.pageService / .blogService — 13 Services)
+   ========================================================================== */
+.pageService {
+    padding: 80px 0;
+    background: #f4f4f4;
+}
+
+.blogService {
+    padding-top: 44px;
+}
+
+.blogService ul {
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: center;
+    row-gap: 28px;
+}
+
+.blogService ul li {
+    width: 16.666667%;
+    padding: 0 10px;
+    text-align: center;
+}
+
+.blogService ul li.serviceWide {
+    width: 33.333334%;
+    max-width: 420px;
+}
+
+.blogService ul li figure {
+    margin-bottom: 12px;
+    text-align: center;
+}
+
+.blogService ul li figure img {
+    width: 88px;
+    height: 88px;
+    transition: transform 0.25s ease;
+}
+
+.blogService ul li:hover figure img {
+    transform: scale(1.07);
+}
+
+.blogService ul li article {
+    font-family: var(--pd-heading-font);
+    font-size: 15px;
+    font-weight: 600;
+    line-height: 1.4;
+    color: #333333;
+    text-align: center;
+}
+
+.blogService ul li article span {
+    display: block;
+    font-weight: 500;
+    color: #555555;
+}
+
+/* ==========================================================================
+   Inner Pages: Work Filter Bar, Work Detail (.pageDetail), Clients (.pageClients), Blog
+   ========================================================================== */
+.paragraphClient {
+    background: #ffffff;
+    padding-top: 56px;
+    padding-bottom: 80px;
+}
+
+.workCategoryTabs {
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: center;
+    gap: 8px;
+    margin-top: 28px;
+    margin-bottom: 10px;
+}
+
+.workCategoryTabs a {
+    display: inline-block;
+    padding: 8px 16px;
+    border: 1px solid #dddddd;
+    background: #ffffff;
+    color: #444444;
+    font-family: var(--pd-heading-font);
+    font-size: 12px;
+    font-weight: 600;
+    letter-spacing: 0.04em;
+    text-transform: uppercase;
+    transition: all 0.2s ease;
+}
+
+.workCategoryTabs a:hover,
+.workCategoryTabs a.active {
+    background: #642f96;
+    border-color: #642f96;
+    color: #ffffff;
+}
+
+.navigator {
+    padding-bottom: 18px;
+    text-align: right;
+}
+
+.navigator a {
+    font-style: italic;
+    font-size: 14px;
+    font-weight: bold;
+    color: #333333;
+}
+
+.navigator a:hover {
+    color: #642f96;
+}
+
+.paragraphDetail {
+    background: #ffffff;
+    padding-top: 44px;
+    padding-bottom: 80px;
+}
+
+.pageDetail {
+    background: #f4f4f4;
+    display: flex;
+    flex-wrap: wrap;
+    overflow: hidden;
+    border: 1px solid #e8e8e8;
+}
+
+.pageDetail .galleryDetail {
+    width: 52%;
+    background: #1c1c1c;
+}
+
+.pageDetail .galleryDetail .detailVideoEmbed {
+    position: relative;
+    width: 100%;
+    aspect-ratio: 16 / 9;
+    background: #000000;
+}
+
+.pageDetail .galleryDetail .detailVideoEmbed iframe {
+    position: absolute;
+    inset: 0;
+    width: 100%;
+    height: 100%;
+    border: 0;
+}
+
+.pageDetail .galleryDetail ul li {
+    position: relative;
+}
+
+.pageDetail .galleryDetail ul li a,
+.pageDetail .galleryDetail .detailVisualBox {
+    position: relative;
+    display: block;
+}
+
+.pageDetail .galleryDetail img.detailMainImg {
+    width: 100%;
+    height: auto;
+    display: block;
+}
+
+.pageDetail .galleryDetail .iconPlay {
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+    background-image: url('../images/playVDO.svg');
+    background-size: 100%;
+    width: 68px;
+    height: 68px;
+    pointer-events: none;
+}
+
+.pageDetail .contentDetail {
+    width: 48%;
+    font-family: var(--pd-body-font);
+    font-size: 15px;
+    color: #444444;
+}
+
+.pageDetail .contentDetail article {
+    padding: 38px 34px;
+}
+
+.pageDetail .contentDetail article .title {
+    font-family: var(--pd-heading-font);
+    font-size: 26px;
+    font-weight: 700;
+    color: #000000;
+    margin-bottom: 18px;
+}
+
+.pageDetail .contentDetail article .metaList {
+    margin-bottom: 20px;
+    line-height: 1.85;
+}
+
+.pageDetail .contentDetail article .metaList strong {
+    color: #111111;
+}
+
+.pageDetail .contentDetail article .detail {
+    line-height: 1.8;
+    margin-bottom: 22px;
+    white-space: pre-line;
+}
+
+.pageDetail .contentDetail article .externalLinkBox a {
+    display: inline-block;
+    color: #642f96;
+    font-weight: 600;
+    word-break: break-all;
+}
+
+.pageDetail .contentDetail article .externalLinkBox a:hover {
+    text-decoration: underline;
+}
+
+/* Clients 8-column Classic Grid (.pageClients) */
+.pageClients {
+    margin-top: 36px;
+}
+
+.pageClients ul {
+    display: flex;
+    flex-wrap: wrap;
+    border-top: 1px solid #dddddd;
+}
+
+.pageClients ul li {
+    width: 12.5%;
+    border-bottom: 1px solid #dddddd;
+    border-right: 1px solid #f0f0f0;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    background: #ffffff;
+    transition: background 0.2s ease;
+}
+
+.pageClients ul li:hover {
+    background: #faf8fc;
+}
+
+.pageClients ul li section {
+    padding: 20px 12px;
+    text-align: center;
+}
+
+.pageClients ul li section img {
+    max-width: 110px;
+    max-height: 110px;
+    object-fit: contain;
+}
+
+/* Blog Classic Grid */
+.blogGridClassic {
+    display: grid;
+    grid-template-columns: repeat(3, 1fr);
+    gap: 28px;
+    margin-top: 40px;
+}
+
+.blogCardClassic {
+    border: 1px solid #e6e6e6;
+    background: #ffffff;
+    display: flex;
+    flex-direction: column;
+    transition: box-shadow 0.25s ease, transform 0.25s ease;
+}
+
+.blogCardClassic:hover {
+    box-shadow: 0 10px 26px rgba(0, 0, 0, 0.08);
+    transform: translateY(-3px);
+}
+
+.blogCardClassic figure {
+    aspect-ratio: 16 / 10;
+    overflow: hidden;
+    background: #222222;
+}
+
+.blogCardClassic figure img {
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+}
+
+.blogCardBody {
+    padding: 22px;
+    display: flex;
+    flex-direction: column;
+    flex: 1;
+}
+
+.blogCategoryTag {
+    display: inline-block;
+    font-size: 11px;
+    font-weight: 700;
+    letter-spacing: 0.08em;
+    text-transform: uppercase;
+    color: #642f96;
+    margin-bottom: 8px;
+}
+
+.blogCardBody h3 {
+    font-family: var(--pd-heading-font);
+    font-size: 19px;
+    line-height: 1.45;
+    color: #111111;
+    margin-bottom: 10px;
+}
+
+.blogCardBody p {
+    font-size: 14px;
+    line-height: 1.7;
+    color: #666666;
+    margin-bottom: 16px;
+}
+
+.blogReadMore {
+    margin-top: auto;
+    font-size: 13px;
+    font-weight: 700;
+    color: #642f96;
+    text-transform: uppercase;
+}
+
+.blogArticleWrap {
+    max-width: 820px;
+    margin: 0 auto;
+}
+
+.blogArticleWrap h1 {
+    font-family: var(--pd-heading-font);
+    font-size: 30px;
+    line-height: 1.4;
+    color: #111111;
+    margin: 10px 0 18px 0;
+}
+
+.blogArticleContent {
+    font-size: 16px;
+    line-height: 1.9;
+    color: #444444;
+    white-space: pre-line;
+    margin-top: 26px;
+}
+
+/* ==========================================================================
+   Footer & Contact Lead Form (#contact / .pageContact)
+   ========================================================================== */
+.pageContact {
+    padding: 72px 0 60px 0;
+    background: #333333;
+    color: #ffffff;
+}
+
+.contactGridWrap {
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: space-between;
+    gap: 40px;
+}
+
+.contact-left {
+    width: calc(46% - 20px);
+}
+
+.logoFooter {
+    margin-bottom: 22px;
+    max-width: 200px;
+}
+
+.menuFooter {
+    margin-bottom: 22px;
+}
+
+.menuFooter ul li {
+    display: inline-block;
+    margin-bottom: 6px;
+}
+
+.menuFooter ul li a {
+    margin-right: 14px;
+    font-family: var(--pd-heading-font);
+    font-size: 15px;
+    color: #ffffff;
+    text-transform: uppercase;
+}
+
+.menuFooter ul li a:hover {
+    color: #a472ca;
+}
+
+.contentContact {
+    line-height: 1.75;
+    font-family: var(--pd-body-font);
+    font-size: 15px;
+    color: #e6e6e6;
+}
+
+.contentContact strong {
+    font-size: 17px;
+    color: #ffffff;
+}
+
+.contentContact a {
+    color: #ffffff;
+}
+
+.contentContact a:hover {
+    color: #a472ca;
+}
+
+.mapDirectionLink {
+    display: inline-block;
+    margin-top: 10px;
+    font-size: 13px;
+    color: #c8b8ef !important;
+    text-decoration: underline;
+}
+
+.iconSocialFooter {
+    overflow: hidden;
+    padding-top: 18px;
+}
+
+.iconSocialFooter a {
+    display: inline-block;
+    margin-right: 10px;
+    transition: transform 0.2s ease;
+}
+
+.iconSocialFooter a:hover {
+    transform: translateY(-2px);
+}
+
+.iconSocialFooter img {
+    width: 34px;
+    height: 34px;
+}
+
+.boxCopyright {
+    font-size: 12px;
+    letter-spacing: 1.5px;
+    color: #cccccc;
+    padding-top: 16px;
+}
+
+/* Contact Right — Inquiry Form Panel */
+.contact-right {
+    width: calc(54% - 20px);
+    text-align: left;
+}
+
+.contactFormCard {
+    background: #292929;
+    border: 1px solid #444444;
+    padding: 28px 30px;
+    border-radius: 3px;
+}
+
+.contactFormCard.lightCard {
+    background: #f9f9f9;
+    border-color: #e2e2e2;
+    color: #333333;
+}
+
+.contactFormTitle {
+    font-family: var(--pd-heading-font);
+    font-size: 22px;
+    font-weight: 700;
+    text-transform: uppercase;
+    color: #ffffff;
+    margin-bottom: 4px;
+}
+
+.lightCard .contactFormTitle {
+    color: #111111;
+}
+
+.contactFormSub {
+    font-size: 13px;
+    color: #bbbbbb;
+    margin-bottom: 18px;
+}
+
+.lightCard .contactFormSub {
+    color: #666666;
+}
+
+.formRow2 {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    gap: 12px;
+}
+
+.formGroup {
+    margin-bottom: 12px;
+}
+
+.formGroup label {
+    display: block;
+    font-size: 12px;
+    font-weight: 600;
+    color: #dddddd;
+    margin-bottom: 5px;
+}
+
+.lightCard .formGroup label {
+    color: #333333;
+}
+
+.formControl {
+    width: 100%;
+    padding: 10px 12px;
+    background: #1f1f1f;
+    border: 1px solid #4c4c4c;
+    color: #ffffff;
+    font-family: inherit;
+    font-size: 14px;
+    border-radius: 2px;
+    transition: border-color 0.2s ease;
+}
+
+.lightCard .formControl {
+    background: #ffffff;
+    border-color: #cccccc;
+    color: #222222;
+}
+
+.formControl:focus {
+    border-color: #a472ca;
+    outline: none;
+}
+
+textarea.formControl {
+    min-height: 92px;
+    resize: vertical;
+}
+
+.honeypotWrap {
+    position: absolute;
+    left: -9999px;
+    width: 1px;
+    height: 1px;
+    overflow: hidden;
+}
+
+.alertSuccess {
+    background: rgba(34, 197, 94, 0.16);
+    border: 1px solid #22c55e;
+    color: #bbf7d0;
+    padding: 12px 14px;
+    font-size: 13.5px;
+    line-height: 1.5;
+    margin-bottom: 14px;
+    border-radius: 2px;
+}
+
+.lightCard .alertSuccess {
+    background: #ecfdf5;
+    color: #166534;
+}
+
+.alertError {
+    background: rgba(239, 68, 68, 0.16);
+    border: 1px solid #ef4444;
+    color: #fecaca;
+    padding: 10px 14px;
+    font-size: 13px;
+    line-height: 1.5;
+    margin-bottom: 14px;
+    border-radius: 2px;
+}
+
+.lightCard .alertError {
+    background: #fef2f2;
+    color: #991b1b;
+}
+
+.btnSubmitContact {
+    display: inline-flex;
+    align-items: center;
+    justify-content: center;
+    gap: 8px;
+    background: #642f96;
+    color: #ffffff;
+    border: 1px solid #642f96;
+    padding: 11px 26px;
+    font-family: var(--pd-heading-font);
+    font-size: 14px;
+    font-weight: 700;
+    letter-spacing: 0.06em;
+    text-transform: uppercase;
+    cursor: pointer;
+    border-radius: 2px;
+    transition: background 0.2s ease;
+}
+
+.btnSubmitContact:hover {
+    background: #7b3eb5;
+}
+
+.btnSubmitContact:disabled {
+    opacity: 0.65;
+    cursor: wait;
+}
+
+/* ==========================================================================
+   Showreel Lightbox Modal (.videoModalBackdrop)
+   ========================================================================== */
+.videoModalBackdrop {
+    position: fixed;
+    inset: 0;
+    background: rgba(0, 0, 0, 0.86);
+    z-index: 2000;
+    display: none;
+    align-items: center;
+    justify-content: center;
+    padding: 20px;
+}
+
+.videoModalBackdrop.open {
+    display: flex;
+}
+
+.boxControlVDO {
+    position: relative;
+    width: min(1060px, 95vw);
+    aspect-ratio: 16 / 9;
+    background: #000000;
+    box-shadow: 0 20px 60px rgba(0, 0, 0, 0.6);
+}
+
+.boxControlVDO iframe {
+    width: 100%;
+    height: 100%;
+    border: 0;
+}
+
+.videoModalClose {
+    position: absolute;
+    top: -40px;
+    right: 0;
+    background: none;
+    border: 0;
+    color: #ffffff;
+    font-size: 15px;
+    font-weight: 700;
+    cursor: pointer;
+    text-transform: uppercase;
+    letter-spacing: 0.08em;
+}
+
+.videoModalClose:hover {
+    color: #c8b8ef;
+}
+
+/* ==========================================================================
+   Responsive Breakpoints (Matching playdigital.co.th)
+   ========================================================================== */
+@media only screen and (max-width: 1023px) {
+    html {
+        scroll-padding-top: 20px;
+    }
+
+    .mainHeader {
+        position: relative;
+        padding: 14px 0;
+    }
+
+    .headerSpacer {
+        display: none;
+    }
+
+    .menuMain {
+        display: none;
+    }
+
+    .Menumobile {
+        display: block;
+    }
+
+    .iconSocial {
+        margin-top: 6px;
+    }
+
+    .pagePortFolioHome ul li {
+        width: 50%;
+    }
+
+    .contentAbout2 ul li {
+        width: 50%;
+    }
+
+    .blogService ul li {
+        width: 25%;
+    }
+
+    .blogService ul li.serviceWide {
+        width: 50%;
+    }
+
+    .pageClients ul li {
+        width: 20%;
+    }
+
+    .blogGridClassic {
+        grid-template-columns: repeat(2, 1fr);
+    }
+
+    .contact-left,
+    .contact-right {
+        width: 100%;
+    }
+}
+
+@media only screen and (max-width: 767px) {
+    .paragraphHome,
+    .pageAbout,
+    .pageService,
+    .paragraphClient,
+    .pageContact {
+        padding-top: 44px;
+        padding-bottom: 44px;
+    }
+
+    .paragraphHome header .top,
+    .pageAbout header .top,
+    .pageAbout2 header .top,
+    .pageService header .top,
+    .sectionHeaderClassic .top {
+        font-size: 24px;
+    }
+
+    .paragraphHome header .bottom,
+    .pageAbout header .bottom,
+    .pageService header .bottom,
+    .sectionHeaderClassic .bottom {
+        font-size: 15px;
+    }
+
+    .blogService ul li {
+        width: 33.333334%;
+    }
+
+    .blogService ul li.serviceWide {
+        width: 100%;
+    }
+
+    .pageDetail .galleryDetail,
+    .pageDetail .contentDetail {
+        width: 100%;
+    }
+
+    .pageDetail .contentDetail article {
+        padding: 24px 20px;
+    }
+
+    .pageClients ul li {
+        width: 25%;
+    }
+
+    .blogGridClassic {
+        grid-template-columns: 1fr;
+    }
+
+    .formRow2 {
+        grid-template-columns: 1fr;
+    }
+
+    .heroOverlayInner {
+        flex-direction: column;
+        align-items: flex-start;
+        gap: 8px;
+    }
+}
+
+@media only screen and (max-width: 479px) {
+    .logoMain img {
+        height: 36px;
+    }
+
+    .pagePortFolioHome ul li {
+        width: 100%;
+    }
+
+    .blogService ul li {
+        width: 50%;
+    }
+
+    .pageClients ul li {
+        width: 33.333334%;
+    }
+
+    .contactFormCard {
+        padding: 20px 16px;
+    }
+}
